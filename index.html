@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrina Diniz | Advocacia Estratégica</title>
+    <style>
+        /* Configurações de Design Sistema Apple */
+        :root {
+            --bg-color: #f5f5f7;
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --glass-header: rgba(245, 245, 247, 0.75);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-gold: #bfa15f;
+            --accent-dark: #121212;
+            --radius-lg: 24px;
+            --radius-sm: 12px;
+            --blur: saturate(180%) blur(20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            letter-spacing: -0.022em;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Menu Superior - Glassmorphism Fixo */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--glass-header);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0 5%;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.85rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Seção de Entrada (Hero) - Minimalista */
+        .hero {
+            padding: 160px 5% 100px 5%;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.35;
+            font-weight: 400;
+            max-width: 680px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Botão Estilo Apple */
+        .btn-primary {
+            background-color: var(--accent-dark);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .btn-primary:hover {
+            background-color: #333333;
+            transform: scale(1.02);
+        }
+
+        /* Seção Perfil (Sobre) */
+        .perfil {
+            padding: 100px 5%;
+            background-color: #ffffff;
+        }
+
+        .perfil-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .perfil-image-box {
+            width: 100%;
+            position: relative;
+        }
+
+        .perfil-img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+            /* Filtro sutil para conversar com o ambiente clean */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06); 
+        }
+
+        .perfil-texto h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .oab-tag {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: 32px;
+        }
+
+        .perfil-texto p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        /* Áreas de Atuação - Grid de Vidro */
+        .atuacao {
+            padding: 120px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .atuacao h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: -0.03em;
+        }
+
+        .grid-atuacao {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Card Glassmorphism */
+        .card-glass {
+            background: var(--card-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.01);
+        }
+
+        .card-glass:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-glass h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .card-glass p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Chamada para Ação (CTA) */
+        .cta-section {
+            padding: 80px 5% 120px 5%;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .cta-container p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        /* Rodapé de Linhas Finas */
+        footer {
+            background-color: #ffffff;
+            padding: 80px 5% 40px 5%;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Botão Flutuante Discreto WhatsApp (Estilo Apple Badge) */
+        .btn-whatsapp-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 999;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp-fixed:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .dot-online {
+            width: 8px;
+            height: 8px;
+            background-color: #24b24b;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Responsividade Fluida */
+        @media (max-width: 868px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.15rem; }
+            .perfil-container { grid-template-columns: 1fr; gap: 40px; }
+            .perfil-image-box { max-width: 320px; margin: 0 auto; }
+            .grid-atuacao { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; gap: 32px; }
+            .cta-section { padding: 60px 5% 80px 5%; }
+            header nav { display: none; } /* Linha pura: foca no conteúdo no mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão de Contato Integrado Redesenhado -->
+    <a href="https://wa.me/5517996782893" target="_blank" class="btn-whatsapp-fixed">
+        <span class="dot-online"></span> Fale com a Dra. Sabrina
+    </a>
+
+    <!-- Menu Superior Minimalista -->
+    <header>
+        <a href="#" class="logo">Dra. Sabrina Diniz <span>• Advocacia</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Perfil</a></li>
+                <li><a href="#atuacao">Atuação</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção de Entrada (Hero) -->
+    <section id="inicio" class="hero">
+        <span class="hero-tag">São José do Rio Preto & Nacional</span>
+        <h1>Precisão jurídica.<br>Perspectiva humana.</h1>
+        <p>Soluções de alto padrão estruturadas com rigor técnico. Resposta ágil de forma presencial ou através de uma infraestrutura 100% digital para todo o Brasil.</p>
+        <a href="https://wa.me/5517996782893" target="_blank" class="btn-primary">Iniciar uma consulta</a>
+    </section>
+
+    <!-- Seção Perfil (Sobre) -->
+    <section id="sobre" class="perfil">
+        <div class="perfil-container">
+            <div class="perfil-image-box">
+                <!-- Mantenha o arquivo com este nome exato na mesma pasta do HTML -->
+                <img src="sabrina-diniz.jpg" alt="Dra. Sabrina Diniz" class="perfil-img">
+            </div>
+            <div class="perfil-texto">
+                <h2>Advocacia sob medida.</h2>
+                <span class="oab-tag">Dra. Sabrina Diniz — OAB/SP 353.752</span>
+                <p>Nossa filosofia de atuação afasta-se de respostas genéricas e processos em massa. Entendemos que cada demanda jurídica carrega particularidades cruciais relacionadas a patrimônios, estruturas familiares e liberdades individuais.</p>
+                <p>A união entre o conhecimento técnico especializado e o suporte focado na experiência do cliente estabelece as diretrizes do escritório. O atendimento é desenhado para se adequar à sua rotina, oferecendo máxima clareza e segurança jurídica, esteja você em São Paulo ou em qualquer estado do país.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Atuação -->
+    <section id="atuacao" class="atuacao">
+        <h2>Áreas de foco</h2>
+        <div class="grid-atuacao">
+            
+            <div class="card-glass">
+                <h3>Família e Sucessões</h3>
+                <p>Planejamento e resolução estratégica de conflitos: divórcios complexos, partilha patrimonial, guarda de menores, pensão alimentícia, inventários judiciais e proteção de herança.</p>
+            </div>
+
+            <div class="card-glass">
+                <h3>Relações Trabalhistas</h3>
+                <p>Análise e defesa técnica de direitos no ambiente corporativo e do trabalhador. Rescisões contratuais, cálculo de passivos, horas extras e assédio.</p>
+            </div>
+
+            <div class="card-glass">
+                <h3>Seguridade e Previdência</h3>
+                <p>Planejamento previdenciário minucioso e concessão de benefícios junto ao INSS. Concessão de aposentadorias especiais, revisões de valores e auxílios.</p>
+            </div>
+
+            <div class="card-glass">
+                <h3>Defesa Criminal</h3>
+                <p>Atuação consultiva e contenciosa de alta discrição. Defesa em inquéritos, acompanhamento imediato em audiências de custódia e proteção integral das garantias fundamentais.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: Chamada para Ação (CTA) -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Precisa de orientação jurídica especializada?</h2>
+            <p>Agende uma avaliação minuciosa do seu caso. Atendimento ágil, estritamente sigiloso e conduzido diretamente pela especialista.</p>
+            <a href="https://wa.me/5517996782893" target="_blank" class="btn-primary">Agendar uma consulta</a>
+        </div>
+    </section>
+
+    <!-- Rodapé Limpo -->
+    <footer id="contato">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>O Escritório</h4>
+                <p>Presencial: São José do Rio Preto - SP</p>
+                <p>Remoto: Plataforma digital segura para atendimento em todo o território nacional.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Canais Diretos</h4>
+                <a href="tel:17996782893">Ligar: (17) 99678-2893</a>
+                <a href="https://wa.me/5517996782893" target="_blank">WhatsApp: (17) 99678-2893</a>
+                <a href="mailto:contato@sabrinadinizadv.com.br">contato@sabrinadinizadv.com.br</a>
+            </div>
+            <div class="footer-col">
+                <h4>Expediente</h4>
+                <p>Segunda a Sexta-feira</p>
+                <p>09h às 18h (Horário de Brasília)</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <span>&copy; 2026 Sabrina Diniz Advocacia.</span>
+            <span>OAB/SP 353.752</span>
+        </div>
+    </footer>
+
+</body>
+</html>
